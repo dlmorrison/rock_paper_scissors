@@ -15,8 +15,17 @@ function computerPlay() {
 }
 
 function playRound(playerSelection, computerSelection) {
-    
-    
+    if(playerSelection === computerSelection){
+        return `It's a tie! You both selected ${playerSelection}.`;
+    } else if(playerSelection === 'Rock' && computerSelection === 'Scissors' ||
+              playerSelection === 'Paper' && computerSelection === 'Rock' ||
+              playerSelection === 'Scissors' && computerSelection === 'Paper'){
+        return `You win! ${playerSelection} beats ${computerSelection}.`;
+    } else if(computerSelection === 'Rock' && playerSelection === 'Scissors' ||
+              computerSelection === 'Paper' && playerSelection === 'Rock' ||
+              computerSelection === 'Scissors' && playerSelection === 'Paper'){
+        return `You lose! ${computerSelection} beats ${playerSelection}.`;
+    }
 }
 
 function game() {
