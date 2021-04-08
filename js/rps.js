@@ -4,7 +4,7 @@ game(5);
 
 function playerPlay() {
     let playerSelection = prompt('Rock, Paper, or Scissors?');
-    while(!validateSelection(playerSelection)){
+    while (!validateSelection(playerSelection)){
         playerSelection = prompt('Please select one of: Rock, Paper, Scissors');
     }
     return playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase();
@@ -30,18 +30,28 @@ function computerPlay() {
 }
 
 function playRound(playerSelection, computerSelection) {
-    if(playerSelection === computerSelection){
-        return `It's a tie! You both selected ${playerSelection}.\nPlayer Score: ${playerScore}\nComputerScore: ${computerScore}`;
-    } else if(playerSelection === 'Rock' && computerSelection === 'Scissors' ||
+    if (playerSelection === computerSelection){
+        return `It's a tie! You both selected ${playerSelection}.\nYour Score: ${playerScore}\nComputerScore: ${computerScore}`;
+    } else if (playerSelection === 'Rock' && computerSelection === 'Scissors' ||
               playerSelection === 'Paper' && computerSelection === 'Rock' ||
               playerSelection === 'Scissors' && computerSelection === 'Paper'){
         playerScore++;
-        return `You win! ${playerSelection} beats ${computerSelection}.\nPlayer Score: ${playerScore}\nComputerScore: ${computerScore}`;
-    } else if(computerSelection === 'Rock' && playerSelection === 'Scissors' ||
+        return `You win! ${playerSelection} beats ${computerSelection}.\nYour Score: ${playerScore}\nComputerScore: ${computerScore}`;
+    } else if (computerSelection === 'Rock' && playerSelection === 'Scissors' ||
               computerSelection === 'Paper' && playerSelection === 'Rock' ||
               computerSelection === 'Scissors' && playerSelection === 'Paper'){
         computerScore++;
-        return `You lose! ${computerSelection} beats ${playerSelection}.\nPlayer Score: ${playerScore}\nComputerScore: ${computerScore}`;
+        return `You lose! ${computerSelection} beats ${playerSelection}.\nYour Score: ${playerScore}\nComputerScore: ${computerScore}`;
+    }
+}
+
+function declareWinner() {
+    if (playerScore > computerScore) {
+        return `Congratulations! You won the game! Final score:\nYou: ${playerScore}\nComputer: ${computerScore}`;
+    } else if (playerScore < computerScore) {
+        return `Too bad! You lost the game. Final score:\nYou: ${playerScore}\nComputer: ${computerScore}`
+    } else {
+        return `It's a tie! You both have a final score of ${playerScore}.`;
     }
 }
 
@@ -52,5 +62,7 @@ function game(numRounds) {
     for(i = 0; i < numRounds; i++){
         console.log(playRound(playerPlay(),computerPlay()));
     }
+
+    console.log(declareWinner());
 
 }
