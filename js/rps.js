@@ -1,3 +1,5 @@
+let playerScore = 0;
+let computerScore = 0;
 game(5);
 
 function playerPlay() {
@@ -29,20 +31,26 @@ function computerPlay() {
 
 function playRound(playerSelection, computerSelection) {
     if(playerSelection === computerSelection){
-        return `It's a tie! You both selected ${playerSelection}.`;
+        return `It's a tie! You both selected ${playerSelection}.\nPlayer Score: ${playerScore}\nComputerScore: ${computerScore}`;
     } else if(playerSelection === 'Rock' && computerSelection === 'Scissors' ||
               playerSelection === 'Paper' && computerSelection === 'Rock' ||
               playerSelection === 'Scissors' && computerSelection === 'Paper'){
-        return `You win! ${playerSelection} beats ${computerSelection}.`;
+        playerScore++;
+        return `You win! ${playerSelection} beats ${computerSelection}.\nPlayer Score: ${playerScore}\nComputerScore: ${computerScore}`;
     } else if(computerSelection === 'Rock' && playerSelection === 'Scissors' ||
               computerSelection === 'Paper' && playerSelection === 'Rock' ||
               computerSelection === 'Scissors' && playerSelection === 'Paper'){
-        return `You lose! ${computerSelection} beats ${playerSelection}.`;
+        computerScore++;
+        return `You lose! ${computerSelection} beats ${playerSelection}.\nPlayer Score: ${playerScore}\nComputerScore: ${computerScore}`;
     }
 }
 
 function game(numRounds) {
+    playerScore = 0;
+    computerScore = 0;
+
     for(i = 0; i < numRounds; i++){
         console.log(playRound(playerPlay(),computerPlay()));
     }
+
 }
