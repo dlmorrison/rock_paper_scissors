@@ -1,7 +1,20 @@
-const playerSelection = 'Rock';
-const computerSelection = computerPlay();
+game(5);
 
-console.log(playRound(playerSelection, computerSelection));
+function playerPlay() {
+    let playerSelection = prompt('Rock, Paper, or Scissors?');
+    while(!validateSelection(playerSelection)){
+        playerSelection = prompt('Please select one of: Rock, Paper, Scissors');
+    }
+    return playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase();
+}
+
+function validateSelection(selection) {
+    selection = selection.toLowerCase();
+    if (selection === 'rock' || selection === 'paper' || selection === 'scissors'){
+        return true;
+    }
+    return false;
+}
 
 function computerPlay() {
     let choice = Math.floor(Math.random() * 3);
@@ -28,6 +41,8 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-function game() {
-    
+function game(numRounds) {
+    for(i = 0; i < numRounds; i++){
+        console.log(playRound(playerPlay(),computerPlay()));
+    }
 }
