@@ -49,7 +49,7 @@ function declareWinner() {
     if (playerScore > computerScore) {
         return `Congratulations! You won the game! Final score:\nYou: ${playerScore}\nComputer: ${computerScore}`;
     } else if (playerScore < computerScore) {
-        return `Too bad! You lost the game. Final score:\nYou: ${playerScore}\nComputer: ${computerScore}`
+        return `Too bad! You lost the game. Final score:\nYou: ${playerScore}\nComputer: ${computerScore}`;
     } else {
         return `It's a tie! You both have a final score of ${playerScore}.`;
     }
